@@ -10,7 +10,7 @@ go get -u github.com/denwwer/hyperion-ng
 ```
 
 ## Examples
-```
+```go
 import (
     "log"
     "github.com/denwwer/hyperion-ng"

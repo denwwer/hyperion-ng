@@ -1,0 +1,35 @@
+{
+  "command": "sysinfo",
+  "info": {
+    "hyperion": {
+      "build": "(HEAD detached at 2.0.16) (Paulchen-Panther-cb85d2d/a93d79b-1705568419)",
+      "gitremote": "https://github.com/hyperion-project/hyperion.ng",
+      "id": "9ae5ea46-5591-5be9-bef4-31c4fc5a8a8d",
+      "isGuiMode": false,
+      "readOnlyMode": false,
+      "rootPath": "/home/boris/.hyperion",
+      "time": "Jul 29 2024 19:46:40",
+      "version": "2.0.16"
+    },
+    "system": {
+      "architecture": "arm64",
+      "cpuHardware": "",
+      "cpuModelName": "",
+      "cpuModelType": "",
+      "cpuRevision": "",
+      "domainName": "localdomain",
+      "hostName": "babunta",
+      "isUserAdmin": false,
+      "kernelType": "linux",
+      "kernelVersion": "6.8.0-51-generic",
+      "prettyName": "Ubuntu 24.04.1 LTS",
+      "productType": "ubuntu",
+      "productVersion": "24.04",
+      "pyVersion": "3.12.3",
+      "qtVersion": "6.4.2",
+      "wordSize": "64"
+    }
+  },
+  "success": true,
+  "tan": 1
+}

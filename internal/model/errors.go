@@ -8,3 +8,6 @@ const (
 	OriginRequired   = "origin is required"
 	DurationRequired = "duration shuld be >= 0"
 )
+
+// AuthError on authorization validation.
+const AuthError = "no authorization"

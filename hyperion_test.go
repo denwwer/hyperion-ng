@@ -39,10 +39,10 @@ func TestServerInfo(t *testing.T) {
 	assert.NotEmpty(t, resp.Effects[0].File)
 	assert.NotEmpty(t, resp.Effects[0].Name)
 	assert.NotEmpty(t, resp.Effects[0].Args)
-	assert.Empty(t, resp.UserEffects())
-	assert.NotEmpty(t, resp.SystemEffects())
+	assert.Empty(t, resp.Effects.Users())
+	assert.NotEmpty(t, resp.Effects.System())
 	assert.NotEmpty(t, resp.LedDevices.Available)
-	assert.Equal(t, "First LED Hardware instance", resp.Instances[0].FriendlyName)
+	assert.Equal(t, "First LED Hardware instance", resp.Instances[0].Name)
 }
 
 func TestSystemInfo(t *testing.T) {
@@ -223,10 +223,10 @@ func testClient() *Client {
 	// host = "192.168.53.130"
 	// port = 8090
 
-	return NewClient(model.Config{
+	return NewClient(Config{
 		// VerboseLog: true,
-		Connection: model.Connection{
-			Type:  model.ConnectHTTP,
+		Connection: Connection{
+			Type:  ConnectHTTP,
 			Host:  host,
 			Port:  port,
 			Token: "6c224a4c-6ebf-491a-9d70-fb7681ca2a59",

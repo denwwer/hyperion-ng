@@ -163,6 +163,7 @@ func (c Client) LEDMode(mode model.LEDMode) error {
 	return c.send(req, nil)
 }
 
+// VideoMode switching.
 func (c Client) VideoMode(mode model.VideoMode) error {
 	req := struct {
 		m.Request

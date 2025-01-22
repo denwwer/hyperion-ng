@@ -13,12 +13,12 @@ type Information struct {
 	ActiveLedColor        []map[string]interface{} `json:"activeLedColor"`
 	Components            []Component              `json:"components"`
 	Adjustments           []Adjustment             `json:"adjustment"`
-	Effects               []Effect                 `json:"effects"`
+	Effects               Effects                  `json:"effects"`
 	ImageToLedMappingType string                   `json:"imageToLedMappingType"` // More info at https://docs.hyperion-project.org/json/Control.html#led-mapping
 	VideoMode             string                   `json:"videomode"`             // More info at https://docs.hyperion-project.org/json/Control.html#video-mode
 	Priorities            []Priority               `json:"priorities"`
 	PrioritiesAutoselect  bool                     `json:"priorities_autoselect"`
-	Instances             []Instance               `json:"instance"`
+	Instances             Instances                `json:"instance"`
 
 	Grabbers struct {
 		Audio  Grabber `json:"audio"`
@@ -34,11 +34,14 @@ type Information struct {
 	Services []string `json:"services"`
 }
 
-// UserEffects returns user created effects.
-func (i Information) UserEffects() []Effect {
+// Effects list of Effect's.
+type Effects []Effect
+
+// Users returns user created effects.
+func (e Effects) Users() []Effect {
 	effects := []Effect{}
 
-	for _, effect := range i.Effects {
+	for _, effect := range e {
 		if strings.HasPrefix(effect.File, "/") {
 			effects = append(effects, effect)
 		}
@@ -47,11 +50,11 @@ func (i Information) UserEffects() []Effect {
 	return effects
 }
 
-// SystemEffects returns system provided effects.
-func (i Information) SystemEffects() []Effect {
+// System returns system provided effects.
+func (e Effects) System() []Effect {
 	effects := []Effect{}
 
-	for _, effect := range i.Effects {
+	for _, effect := range e {
 		if strings.HasPrefix(effect.File, ":") {
 			effects = append(effects, effect)
 		}
@@ -100,7 +103,7 @@ type Effect struct {
 	Script string                 `json:"script,omitempty"` // Optional
 }
 
-// ActiveEffect active effect info
+// ActiveEffect active effect info.
 type ActiveEffect struct {
 	Script   string                 `json:"script"`
 	Name     string                 `json:"name"`
@@ -124,11 +127,24 @@ type Priority struct {
 	Duration int `json:"duration_ms"`
 }
 
+// Instances list of Instance's.
+type Instances []Instance
+
+// Find instance by id.
+func (i Instances) Find(instance int) *Instance {
+	for _, ins := range i {
+		if ins.Instance == instance {
+			return &ins
+		}
+	}
+	return nil
+}
+
 // Instance information and their state.
 type Instance struct {
-	Instance     int    `json:"instance"`
-	Running      bool   `json:"running"`
-	FriendlyName string `json:"friendly_name"`
+	Instance int    `json:"instance"`
+	Running  bool   `json:"running"`
+	Name     string `json:"friendly_name"`
 }
 
 // Led layout information.

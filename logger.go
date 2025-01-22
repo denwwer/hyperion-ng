@@ -9,6 +9,7 @@ type Logger interface {
 	Error(msg string)
 }
 
+// StdLogger represent standard logger from "log" pkg.
 type StdLogger struct{}
 
 func (l *StdLogger) Info(msg string) {

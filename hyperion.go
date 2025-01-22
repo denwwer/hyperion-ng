@@ -11,10 +11,9 @@ import (
 	"time"
 
 	m "github.com/denwwer/hyperion-ng/internal/model"
-	"github.com/denwwer/hyperion-ng/model"
 )
 
-// Defaults
+// Basic configuration.
 const (
 	ClientName   = "hyperion-ng"
 	ClientHeader = "X-Client"
@@ -22,8 +21,6 @@ const (
 
 	AttemptDelay = 5 * time.Second
 	AttemptCount = 5
-
-	AuthError = "no authorization"
 )
 
 // ClientOption available options.
@@ -54,7 +51,7 @@ type Client struct {
 }
 
 // NewClient creates new client.
-func NewClient(conf model.Config, opt ...ClientOption) *Client {
+func NewClient(conf Config, opt ...ClientOption) *Client {
 	c := &Client{
 		cl: &http.Client{
 			Timeout: conf.GetTimeout(),
@@ -125,7 +122,7 @@ func (c *Client) send(req interface{}, respInfo interface{}) error {
 	}
 
 	if !respData.Success {
-		if c.token == "" && strings.ToLower(respData.Error) == AuthError {
+		if c.token == "" && strings.ToLower(respData.Error) == m.AuthError {
 			return errors.New(m.TokenRequire)
 		}
 		return errors.New(respData.Error) // request processed with error
@@ -176,8 +173,8 @@ func (c Client) logResponse(resp *http.Response) {
 	c.logger.Info("<<<\n" + string(respLog))
 }
 
-func getURL(conf model.Config) string {
-	if conf.Connection.Type == model.ConnectHTTP {
+func getURL(conf Config) string {
+	if conf.Connection.Type == ConnectHTTP {
 		schema := "http"
 		if conf.Connection.SSL {
 			schema = "https"

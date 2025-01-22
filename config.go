@@ -1,4 +1,4 @@
-package model
+package hyperion
 
 import "time"
 
@@ -14,7 +14,7 @@ const (
 
 // Config for client.
 type Config struct {
-	VerboseLog bool       `json:"verbose_log"`
+	VerboseLog bool       `json:"verbose_log"` // Enable verbose logging
 	Connection Connection `json:"connection"`
 }
 

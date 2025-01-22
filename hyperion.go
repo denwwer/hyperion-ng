@@ -15,12 +15,12 @@ import (
 
 // Basic configuration.
 const (
-	ClientName   = "hyperion-ng"
-	ClientHeader = "X-Client"
-	AuthHeader   = "Authorization"
+	clientName   = "hyperion-ng"
+	clientHeader = "X-Client"
+	authHeader   = "Authorization"
 
-	AttemptDelay = 5 * time.Second
-	AttemptCount = 5
+	attemptDelay = 5 * time.Second
+	attemptCount = 5
 )
 
 // ClientOption available options.
@@ -91,7 +91,7 @@ func (c *Client) send(req interface{}, respInfo interface{}) error {
 	var respErr error
 
 	// process request and retry if failed
-	for i := 1; i <= AttemptCount; i++ {
+	for i := 1; i <= attemptCount; i++ {
 		resp, respErr = c.cl.Do(httpReq)
 
 		c.logResponse(resp)
@@ -102,7 +102,7 @@ func (c *Client) send(req interface{}, respInfo interface{}) error {
 
 		// retry
 		c.logger.Warn(fmt.Sprintf("[WARN] could not connect to Hyperion [%s] (attem %d) becouse of error: %s", c.url, i, respErr))
-		time.Sleep(AttemptDelay)
+		time.Sleep(attemptDelay)
 	}
 
 	if respErr != nil {
@@ -133,9 +133,9 @@ func (c *Client) send(req interface{}, respInfo interface{}) error {
 
 func (c Client) setHeaders(req *http.Request) {
 	if c.token != "" {
-		req.Header.Set(AuthHeader, "token "+c.token)
+		req.Header.Set(authHeader, "token "+c.token)
 	}
-	req.Header.Set(ClientHeader, ClientName)
+	req.Header.Set(clientHeader, clientName)
 
 	for key, val := range c.headers {
 		req.Header.Set(key, val)

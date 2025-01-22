@@ -1,5 +1,6 @@
-![Static Badge](https://img.shields.io/badge/go-1.23-027c9c) 
+![Static Badge](https://img.shields.io/badge/go-1.23-027c9c)
 ![GitHub last commit](https://img.shields.io/github/last-commit/denwwer/hyperion-ng)
+[![Go Reference](https://pkg.go.dev/badge/github.com/denwwer/hyperion-ng.svg)](https://pkg.go.dev/github.com/denwwer/hyperion-ng)
 
 **hyperion-ng** is library that helps communicate with [Hyperion-NG](https://hyperion-project.org/) JSON API.
 

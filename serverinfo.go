@@ -1,8 +1,8 @@
 package hyperion
 
 import (
-	m "github.com/hyperion-ng/internal/model"
-	"github.com/hyperion-ng/model"
+	m "github.com/denwwer/hyperion-ng/internal/model"
+	"github.com/denwwer/hyperion-ng/model"
 )
 
 const cmdServerInfo = "serverinfo"

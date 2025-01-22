@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/hyperion-ng/model"
+	"github.com/denwwer/hyperion-ng/model"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

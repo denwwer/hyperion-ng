@@ -101,7 +101,7 @@ func (c *Client) send(req interface{}, respInfo interface{}) error {
 		}
 
 		// retry
-		c.logger.Warn(fmt.Sprintf("[WARN] could not connect to Hyperion [%s] (attem %d) becouse of error: %s", c.url, i, respErr))
+		c.logger.Warn(fmt.Sprintf("[WARN] could not connect to Hyperion [%s] (attem %d) because of error: %s", c.url, i, respErr))
 		time.Sleep(attemptDelay)
 	}
 

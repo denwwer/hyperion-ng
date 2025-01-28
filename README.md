@@ -1,4 +1,5 @@
 ![Static Badge](https://img.shields.io/badge/go-1.23-027c9c)
+[![Go Report Card](https://goreportcard.com/badge/github.com/denwwer/hyperion-ng)](https://goreportcard.com/report/github.com/denwwer/hyperion-ng)
 ![GitHub last commit](https://img.shields.io/github/last-commit/denwwer/hyperion-ng)
 [![Go Reference](https://pkg.go.dev/badge/github.com/denwwer/hyperion-ng.svg)](https://pkg.go.dev/github.com/denwwer/hyperion-ng)
 
